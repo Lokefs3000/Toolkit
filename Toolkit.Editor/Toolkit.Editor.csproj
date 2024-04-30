@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <IsAotCompatible>True</IsAotCompatible>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <IsAotCompatible>True</IsAotCompatible>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="call copybuild.bat $(Configuration) $(OutDir) $(ProjectDir)" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Toolkit.Core\Toolkit.Core.csproj" />
+    <ProjectReference Include="..\Toolkit.Graphics\Toolkit.Renderer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EGraphics\" />
+  </ItemGroup>
+
+</Project>

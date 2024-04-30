@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="call copybuild.bat $(Configuration) $(OutDir) $(ProjectDir)" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Toolkit.Core\Toolkit.Core.csproj" />
+  </ItemGroup>
+
+</Project>
